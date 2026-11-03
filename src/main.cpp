@@ -1,0 +1,90 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include "../include/BuildingLoader.h"
+#include "../include/FacilityLoader.h"
+#include "../include/HashTable.h"
+using namespace std;
+
+int main()
+{
+  // Load buildings
+  vector<string> buildings = loadBuildings("data/buildings.txt");
+
+  // Create hash table
+  HashTable facilities;
+
+  vector<Facility> acceptedFacilities;
+
+  // Load facilities
+  loadFacilities(
+      "data/facilities.txt",
+      buildings,
+      facilities,
+      acceptedFacilities);
+
+  string choice;
+
+  do
+  {
+    cout << "\n FACILITY MANAGEMENT: " << endl;
+    cout << "1. View all facilities" << endl;
+    cout << "2. Search facility by ID" << endl;
+    cout << "10. Exit" << endl;
+    cout << "Enter your choice: ";
+
+    getline(cin, choice);
+
+    if (choice == "1")
+    {
+      cout << "\nAll Facilities: " << endl;
+
+      for (const Facility &facility : acceptedFacilities)
+      {
+        facility.display();
+      }
+
+      cout << "Total Facilities: "
+           << acceptedFacilities.size() << endl;
+    }
+
+    else if (choice == "2")
+    {
+      string userID;
+
+      cout << "Enter facility ID: ";
+      getline(cin, userID);
+
+      userID = normalizeFacilityID(userID);
+
+      if (!isValidFacilityID(userID))
+      {
+        cout << "Invalid facility ID format." << endl;
+      }
+      else
+      {
+        const Facility *result = facilities.search(userID);
+
+        if (result != nullptr)
+        {
+          cout << "\nFacility found!" << endl;
+          result->display();
+        }
+        else
+        {
+          cout << "Facility " << userID
+               << " was not found." << endl;
+        }
+      }
+    }
+
+    else if (choice == "10")
+    {
+      cout << " " << endl;
+    }
+
+
+  } while (choice != "10");
+
+  return 0;
+}
