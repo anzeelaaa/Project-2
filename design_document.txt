@@ -1,0 +1,11 @@
+Custom Hash Function: The facility module uses a custom hash table to store and search facilities by their IDs. Before an ID is inserted or searched, it is trimmed and converted to uppercase for consistency.
+
+Collision Strategy: The hash table handles collisions on each item separately. Each bucket contains a vector of facilities, allowing multiple facilities to share the same bucket. Before inserting a facility, the program checks the bucket for an existing matching ID and duplicate facility IDs are rejected. A collision occurs when a new facility is inserted into a bucket that already contains another facility.
+
+Main Classes and Modules:
+
+Facility: Stores facility information, including facility ID, name, building name, and category.
+HashTable: Implements the custom hash function, handles collisions, facility insertion, and searching by ID.
+FacilityLoader: Reads facility records from a file, validates the records, rejects invalid or duplicate facilities, and inserts accepted facilities into the hash table.
+BuildingLoader: Loads building names from a file, skips blank lines and comments, and checks for duplicate building names.
+Main: Loads the building and facility data and provides a menu to view all facilities, search by facility ID, or exit the program.
