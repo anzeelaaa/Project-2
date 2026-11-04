@@ -1,1 +1,2 @@
-
+F009|Gym Locker|Gym|Recreation
+F010|Science Desk|Science Building|Study
