@@ -1,6 +1,6 @@
-Custom Hash Function: The facility module uses a custom hash table to store and search facilities by their IDs. Before an ID is inserted or searched, it is trimmed and converted to uppercase for consistency.
+Custom Hash Function: The facility module uses a custom hash table to store and search facilities by their IDs. Before an ID is inserted or searched, it is trimmed and converted to uppercase for consistency. The hash table has a capacity of 11 and also counts entries and collisions for the summary.
 
-Collision Strategy: The hash table handles collisions on each item separately. Each bucket contains a vector of facilities, allowing multiple facilities to share the same bucket. Before inserting a facility, the program checks the bucket for an existing matching ID and duplicate facility IDs are rejected. A collision occurs when a new facility is inserted into a bucket that already contains another facility.
+Collision Strategy: The hash table handles collisions on each item using separate chaining which prevents facilities from being overwrritten. Each bucket contains a vector of facilities, allowing multiple facilities to share the same bucket index. Before inserting a facility, the program checks the bucket for an existing matching ID and duplicate facility IDs are rejected. A collision occurs when a new facility is inserted into a bucket that already contains another facility. A collision occurs when there is a successful insertion into a bucket that already contains at least one facility. 
 
 Main Classes and Modules:
 
