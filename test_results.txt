@@ -1,1 +1,29 @@
+Facility Module Testing
 
+Test 1- Hash Table Collision Handling: Pass
+
+What was done: Loaded the sample facility records and checked whether multiple facilities could be stored in the same hash table bucket
+
+Result: 10 facilities accepted, 1 collision detected.
+
+Invalid Facility Records: Pass
+
+What was done: Added five invalid records to facilities.txt:
+
+Test 2- Invalid facility ID, Duplicate facility ID, Empty facility name, Empty category, Nonexistent building
+
+Result: Result: 10 accepted, 5 rejected, and 10 hash table entries
+
+Test 3- Collision Demonstration Using Test Data: Pass
+
+Test File: testdata/test_facilities.txt
+Test Records: F009 and F010
+
+What was done: Inserted two facility IDs that produce the same hash table bucket using a capacity of 11
+
+Result:
+Accepted: 2
+Rejected: 0
+Hash Table Capacity: 11
+Hash Table Entries: 2
+Hash Table Collisions: 1
