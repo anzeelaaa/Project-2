@@ -4,12 +4,21 @@
 #include "../include/BuildingLoader.h"
 #include "../include/FacilityLoader.h"
 #include "../include/HashTable.h"
+#include "../include/CampusGraph.h"
+#include "../include/ConnectionLoader.h"
 using namespace std;
 
 int main()
 {
   // Load buildings
   vector<string> buildings = loadBuildings("data/buildings.txt");
+
+  // build campus graph then load connections 
+  CampusGraph graph;
+  for (const string& name: buildings){
+	graph.addBuilding(name);
+  }
+  loadConnections("data/connections.txt", graph);
 
   // Create hash table
   HashTable facilities;
