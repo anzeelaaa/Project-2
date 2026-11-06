@@ -1,1 +1,114 @@
+10.1:
 
+Test 1: Valid Facility Records
+
+Description: Test loading valid facility records.
+
+Input: Original data/facilities.txt.
+
+Expected Result: All 10 valid facility records should load successfully.
+
+Actual Result:
+Accepted: 10
+Rejected: 0
+
+PASS
+
+Test 2: Blank Lines, Comment Lines, and Field Counts
+
+Description: Test blank lines, comment lines, records with too few fields, and records with too many fields.
+
+Input: Added a blank line, a comment line, one valid facility record, one record with too few fields, and one record with too many fields to facilities.txt
+
+Expected Result: Blank lines and comments should be skipped, valid facility should be accepted, and the two incorrectly formatted records should be rejected
+
+Actual Result:
+Accepted: 11
+Rejected: 2
+Hash Table Capacity: 11
+Hash Table Entries: 11
+Hash Table Collisions: 2
+
+PASS
+
+Test 3: Missing Facility File
+
+Description: Attempt to load a facility file that does not exist.
+
+Input: data/fake_facilities.txt
+
+Expected Result: An error should be displayed but the program should not crash.
+
+Actual Result: Displayed Error: Could not open data/missing_facilities.txt, program didn't crash
+
+PASS
+
+Test 4: Duplicate Facility IDs with Different Capitalization
+
+Description: Test whether facility IDs that differ only by capitalization are treated as duplicates.
+
+Input:
+F201|Capitalization Test|Gym|Recreation
+f201|Duplicate Capitalization Test|Gym|Recreation
+
+Expected Result: F201 should be accepted, and f201 should be rejected as a duplicate
+
+Actual Result:
+Accepted: 11
+Rejected: 1
+Warning: Duplicate facility ID.
+
+PASS
+
+Test 5: Unknown Building Reference in Facilities
+
+Description: Test whether a facility referencing a nonexistent building is rejected.
+
+Input: F202|Unknown Building Test|Fake Building|Study
+
+Expected Result: The facility should be rejected with a warning because the referenced building does not exist.
+
+Actual Result:
+
+Accepted: 10
+Rejected: 1
+Warning: Building does not exist.
+
+PASS
+
+Test 6: Invalid Facility ID
+
+Description: Test whether a facility with an invalid ID format is rejected.
+
+Input: ABC01|Invalid ID Test|Gym|Recreation
+
+Expected Result: The facility should be rejected because the ID does not follow the requiredformat.
+
+Actual Result: The invalid facility ID was rejected.
+
+PASS
+
+Test 7: Empty Facility Name
+
+Description: Test whether a facility with an empty name is rejected
+
+Input: 
+F011||Gym|Recreation
+
+Expected Result: The facility should be rejected because the facility name is required
+
+Actual Result: The empty facility name was rejected
+
+ PASS
+
+Test 8: Empty Facility Category
+
+Description: Test whether a facility with an empty category is rejected.
+
+Input: F012|Empty Category Test|Gym|
+
+Expected Result: The facility should be rejected because the category is required
+
+Actual Result: The empty facility category was rejected
+
+PASS
