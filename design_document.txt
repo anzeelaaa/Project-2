@@ -8,4 +8,4 @@ Facility: Stores facility information, including facility ID, name, building nam
 HashTable: Implements the custom hash function, handles collisions, facility insertion, and searching by ID.
 FacilityLoader: Reads facility records from a file, validates the records, rejects invalid or duplicate facilities, and inserts accepted facilities into the hash table.
 BuildingLoader: Loads building names from a file, skips blank lines and comments, and checks for duplicate building names.
-Main: Loads the building and facility data and provides a menu to view all facilities, search by facility ID, or exit the program.
+Main.cpp: Loads the building and facility data and provides a menu to view all facilities, search by facility ID, or exit the program. 
