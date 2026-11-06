@@ -1,1 +1,1 @@
-Anzeela Mahmood: Created GitHub repository, created main.cpp, created custom hash table and facility loader
+Anzeela Mahmood: Member A, created GitHub repository, created main.cpp, created custom hash table and handled collisions, created facility class, implemented facility functions, tested file loading, hash collisions, searching, invalid inputs.
