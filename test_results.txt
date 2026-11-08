@@ -112,3 +112,142 @@ Expected Result: The facility should be rejected because the category is require
 Actual Result: The empty facility category was rejected
 
 PASS
+
+Campus Graph Test (nansu baniya) 
+
+test 9: valid connections, blank lines, comment lines, and field counts
+
+Description: test loading valid connection records along with blank lines, comment lines, and records with too many or too few fields. 
+
+Input: data/connections.txt with the 6 original connections, a blank line, a comment line, one record with too many fields, and one record with too few fields.
+
+expected results: blank lines and comments should be skipped, the valid 6 connections accepeted, and the 2 incorrectly formatted records rejected with warnings showing the line number.
+
+actual results: 
+warning: data/connections.txt, line number 10: expected exactly 2 fields
+warning: data/connections.txt, line number 11: expected exactly 2 fields
+connection loading summary 
+accepted: 6
+rejected: 2
+
+pass 
+
+test 10: duplicate and reversed connections
+
+description: test whether a reserved connection and a connection that differs only by capitalization are rejected as duplicates.
+
+input: added to data/connections.txt
+Student Union|Library
+Library|student union 
+
+Expected Result: both records should be rejected as duplicates because Library|Student Union already exists. the connection should be counted only once.
+
+Actual Result:
+warning: data/connections.txt, line number 8: duplicate connection (possibly reversed).
+warning: data/connections.txt, line number 9: duplicate connection (possibly reversed).
+connection loading summary
+Accepted: 6
+rejected: 2
+
+pass
+
+test 11: unknown building refrences in connections 
+
+Description: test whether connections that refer to buildings not in buildings.txt are rejected.
+
+Input: added to data/connections.txt:
+Library|Moon Base
+Fake Hall|Gym
+
+Expected result: both records should be rejected with a warning naming the unknown building.
+
+Actual result:
+warning: data/connections.txt, line number 8: Unknown building "Moon Base".
+warning: data/connections.txt, line number 9: unknown building"Fake Hall".
+Connection loading summary
+Accepted: 6
+rejected: 2
+
+pass
+
+test 12: misiing connections file 
+
+Description: attempt to run the program when connections.txt does not exist.
+
+Input: data/connections.txt removed.
+
+Expected Result: an error naming the file should be displayed, the file treated as empty, and the program should continue without crashing. all buildings should show no connections.
+
+Actual Result:
+error:could not opendata/connections.txt; treat it as empty
+Connection loading summary
+Accepted: 0
+rejected: 0
+Option 3 showed all 7 buildings with (no connection). the program did not crash.
+
+pass 
+
+test: BFS from connected building
+
+Description: Run BFS reachability (menu option 5) from a building that has connections.
+
+Input: Original data files, starting building: Library
+
+Expected Result: Buildings in BFS visit order with distances: Library 0, Student Union 1, Business Building 1, Science Building 2, Gym 2, Engineering Building 3. Reachable: 6 of 7 buildings.
+
+Actual Result:
+From Library:
+Library (distance 0)
+Student Union (distance 1)
+Business Building (distance 1)
+Science Building (distance 2)
+Gym (distance 2)
+Engineering Building (distance 3)
+Reachable: 6 of 7 buildings
+
+pass
+
+
+test 14: BFS from an isolated building 
+
+Description: Run BFS from a building with no connections, typed in lowercase.
+
+Input: Original data files, starting building: observatory
+
+Expected Result: Only Observatory at distance 0. Reachable: 1 of 7 buildings.
+
+Actual Result:
+From Observatory:
+Observatory (distance 0)
+Reachable: 1 of 7 buildings
+
+pass
+
+test 15: BFS with an unknown start
+
+Description: Run BFS from a building that does not exist.
+
+Input: Original data files, starting building: Moon Base
+
+Expected Result: An error message should be displayed and the program should return to the menu.
+
+Actual Result:
+Error: building Moon Base was not found.
+The menu was displayed again.
+
+pass 
+
+test 16: graph with multiple connected components 
+
+Description: Run BFS on a graph with three separate groups of buildings.
+
+Input: buildings.txt: A, B, C, D, E, F. connections.txt: A|B, B|C, D|E. F has no connections. BFS from A, then D, then F.
+
+Expected Result: from A reaches A, B, C (3 of 6). from D reaches D, E (2 of 6). from F reaches only F (1 of 6).
+
+Actual Result:
+From A: A (distance 0), B (distance 1), C (distance 2). Reachable: 3 of 6 buildings
+From D: D (distance 0), E (distance 1). Reachable: 2 of 6 buildings
+From F: F (distance 0). Reachable: 1 of 6 buildings
+
+pass
