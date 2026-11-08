@@ -1,3 +1,9 @@
+/*
+ * ConnectionLoader.cpp
+ * Purpose: Reads connections.txt line by line, validates each record,
+ *          and adds valid connections to the campus graph.
+ * Author: Nansu Baniya (Member B)
+ */
 #include "../include/ConnectionLoader.h"
 #include <fstream>
 #include <iostream>

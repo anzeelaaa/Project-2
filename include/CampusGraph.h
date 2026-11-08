@@ -1,3 +1,9 @@
+/*
+ * CampusGraph.h
+ * Purpose: Undirected graph of campus buildings and walkways.
+ *          Stored as an adjacency list; supports BFS reachability.
+ * Author: Nansu Baniya (Member B)
+ */
 #ifndef CAMPUSGRAPH_H
 #define CAMPUSGRAPH_H
 

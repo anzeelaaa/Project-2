@@ -1,5 +1,11 @@
+/*
+ * ConnectionLoader.h
+ * Purpose: Loads connections.txt into the campus graph, rejecting
+ *          bad records with warnings and printing a load summary.
+ * Author: Nansu Baniya (Member B)
+ */
 #ifndef CONNECTION_H
-#define Connection_h
+#define CONNECTION_H
 
 #include "CampusGraph.h"
 #include <string>
