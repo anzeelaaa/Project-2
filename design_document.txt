@@ -3,22 +3,20 @@ Custom Hash Function: The facility module uses a custom hash table to store and 
 
 Collision Strategy: The hash table handles collisions on each item using separate chaining which prevents facilities from being overwrritten. Each bucket contains a vector of facilities, allowing multiple facilities to share the same bucket index. Before inserting a facility, the program checks the bucket for an existing matching ID and duplicate facility IDs are rejected. A collision occurs when a new facility is inserted into a bucket that already contains another facility. A collision occurs when there is a successful insertion into a bucket that already contains at least one facility. 
 
-Main Classes and Modules:
-
-Facility: Stores facility information, including facility ID, name, building name, and category.
-HashTable: Implements the custom hash function, handles collisions, facility insertion, and searching by ID.
-FacilityLoader: Reads facility records from a file, validates the records, rejects invalid or duplicate facilities, and inserts accepted facilities into the hash table.
-BuildingLoader: Loads building names from a file, skips blank lines and comments, and checks for duplicate building names.
-Main.cpp: Loads the building and facility data and provides a menu to view all facilities, search by facility ID, or exit the program. 
-
 Graph Representation: The campus graph is stored as an adjacency list. Building names are kept in a vector in the order they appear in buildings.txt, so each building has an index. For each building, a second vector holds the indexes of its neighbors. The graph is undirected: when a connection is accepted, each building is added to the other's neighbor list, but the connection is counted only once. Before adding a connection, the program rejects unknown buildings, self-connections, and duplicates. Because every connection is stored on both sides, checking one building's list also catches a reversed duplicate (B|A after A|B). Building names are matched ignoring capitalization and outer spaces.
 
 Why an adjacency list: The campus graph is sparse (the sample has 6 connections among 7 buildings), so an adjacency list only stores the connections that exist, while a matrix would store every possible pair. An adjacency list also keeps neighbors in the order the connections were loaded, which decides the BFS visit order. Both vectors grow as needed, so there is no fixed limit on buildings or connections.
 
 BFS Reachability: BFS uses a queue and a visited list. A building is marked visited when it is added to the queue, so it is never added twice. Each building's distance is one more than the distance of the building it was reached from. Neighbors are explored in insertion order and are never sorted.
 
+
+Main Classes and Modules:
+
+Facility: Stores facility information, including facility ID, name, building name, and category.
+HashTable: Implements the custom hash function, handles collisions, facility insertion, and searching by ID.
+FacilityLoader: Reads facility records from a file, validates the records, rejects invalid or duplicate facilities, and inserts accepted facilities into the hash table.
+BuildingLoader: Loads building names from a file, skips blank lines and comments, and checks for duplicate building names.
 CampusGraph: Stores buildings and connections as an adjacency list, adds connections with validation, and provides the graph display, degree counts, and BFS reachability.
-
 ConnectionLoader: Reads connections.txt, validates each record (field count, empty fields, unknown buildings, self-connections, duplicates), adds valid connections to the campus graph, and prints warnings and a load summary.
-
 Main.cpp: Loads the building, connection, and facility data, builds the campus graph, and provides a menu to view all facilities, search by facility ID, view the campus graph, display graph counts and degrees, find reachable buildings with BFS, or exit the program.
+
