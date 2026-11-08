@@ -1,3 +1,4 @@
+
 #ifndef DEPARTMENTTREE_H
 #define DEPARTMENTTREE_H
 
@@ -9,6 +10,7 @@ using namespace std;
 
 class DepartmentTree {
 private:
+
     struct Node {
         string name;
         Node* parent;
@@ -34,13 +36,16 @@ private:
     string trim(const string& text) const;
 
 public:
+
     DepartmentTree();
     ~DepartmentTree();
 
     bool loadFromFile(const string& filename);
 
-    bool addDepartment(const string& name,
-                       const string& parentName = "");
+    bool addDepartment(
+        const string& name,
+        const string& parentName = ""
+    );
 
     void searchDepartment(const string& name) const;
 
@@ -56,3 +61,4 @@ public:
 };
 
 #endif
+
