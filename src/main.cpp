@@ -8,17 +8,28 @@
 #include "../include/ConnectionLoader.h"
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
-  // Load buildings
-  vector<string> buildings = loadBuildings("data/buildings.txt");
+  // Optional data directory argument (NFR-10)
+  string dataDir = "data";
+  if (argc > 1)
+  {
+    dataDir = argv[1];
+  }
+  if (!dataDir.empty() && dataDir.back() == '/')
+  {
+    dataDir.pop_back();
+  }
+
+  //load buildings
+  vector<string> buildings = loadBuildings(dataDir + "/buildings.txt");
 
   // build campus graph then load connections 
   CampusGraph graph;
   for (const string& name: buildings){
 	graph.addBuilding(name);
   }
-  loadConnections("data/connections.txt", graph);
+  loadConnections(dataDir + "/connections.txt", graph);
 
   // Create hash table
   HashTable facilities;
@@ -27,7 +38,7 @@ int main()
 
   // Load facilities
   loadFacilities(
-      "data/facilities.txt",
+      dataDir+"/facilities.txt",
       buildings,
       facilities,
       acceptedFacilities);
