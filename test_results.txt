@@ -187,7 +187,7 @@ Option 3 showed all 7 buildings with (no connection). the program did not crash.
 
 pass 
 
-test: BFS from connected building
+test 13: BFS from connected building
 
 Description: Run BFS reachability (menu option 5) from a building that has connections.
 
