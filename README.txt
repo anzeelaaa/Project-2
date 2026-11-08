@@ -51,4 +51,5 @@ DIRECTORY LAYOUT
 TEAM MEMBERS
 
 1. Nansu Baniya (username = nansubaniya22-sudo) - Member B: campus graph and BFS
+2. Adebukola Adeyemi ( username = buki8222alt) - Member C: department tree, traversals, department statistics
 
