@@ -1,3 +1,5 @@
 Anzeela Mahmood: Member A, created GitHub repository, created main.cpp, created custom hash table and handled collisions, created facility class, implemented facility functions, tested file loading, hash collisions, searching, invalid inputs.
 
 Nansu Baniya: Member B, created CampusGraph class (adjacency list), created connection loader with validation and load summary, implemented graph display, degree counts, and BFS reachability, added menu options 3-5, built the campus graph in main.cpp, wrote graph and BFS tests, wrote the graph section of the design document.
+
+Adebukola Adeyemi: Member C, created DepartmentTree class, implemented department loading, adding, and searching, developed hierarchy display and preorder, postorder, and level-order traversals, implemented department statistics, integrated menu options 9–15 into main.cpp, and tested department tree features.
