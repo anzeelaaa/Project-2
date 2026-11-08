@@ -39,6 +39,9 @@ int main()
     cout << "\n FACILITY MANAGEMENT: " << endl;
     cout << "1. View all facilities" << endl;
     cout << "2. Search facility by ID" << endl;
+    cout << "3. View campus graph" <<endl;
+    cout << "4. display graph counts and degrees" <<endl;
+    cout << "5. find reachable buildings " <<endl;
     cout << "10. Exit" << endl;
     cout << "Enter your choice: ";
 
@@ -86,6 +89,20 @@ int main()
         }
       }
     }
+ 
+    else if (choice == "3"){
+	graph.displayGraph();
+    }
+    else if (choice =="4"){
+		graph.displayCountsAndDegrees();
+    }
+    else if ( choice == "5"){
+	string startName;
+	cout<< "enter starting building: ";
+	getline(cin, startName);
+	graph.displayReachable(startName);
+    }
+
 
     else if (choice == "10")
     {

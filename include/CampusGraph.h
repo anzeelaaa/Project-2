@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <utility>
 using namespace std;
 
 enum ConnectionResult{
@@ -19,6 +20,12 @@ public:
 	int findBuilding(const string& name) const;
 
 	bool addBuilding(const string& name);
+
+	void displayGraph() const; 
+	int getDegree(int index) const;
+	vector<pair<int, int>> bfs(int start) const;
+	void displayCountsAndDegrees() const;
+	void displayReachable(const string& startName) const;
 
 	ConnectionResult addConnection(const string& nameA, const string& nameB);
 
