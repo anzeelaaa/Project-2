@@ -121,7 +121,7 @@ Description: test loading valid connection records along with blank lines, comme
 
 Input: data/connections.txt with the 6 original connections, a blank line, a comment line, one record with too many fields, and one record with too few fields.
 
-expected results: blank lines and comments should be skipped, the valid 6 connections accepeted, and the 2 incorrectly formatted records rejected with warnings showing the line number.
+expected results: blank lines and comments should be skipped, the valid 6 connections accepted, and the 2 incorrectly formatted records rejected with warnings showing the line number.
 
 actual results: 
 warning: data/connections.txt, line number 10: expected exactly 2 fields
@@ -134,7 +134,7 @@ pass
 
 test 10: duplicate and reversed connections
 
-description: test whether a reserved connection and a connection that differs only by capitalization are rejected as duplicates.
+description: test whether a reversed connection and a connection that differs only by capitalization are rejected as duplicates.
 
 input: added to data/connections.txt
 Student Union|Library
@@ -151,7 +151,7 @@ rejected: 2
 
 pass
 
-test 11: unknown building refrences in connections 
+test 11: unknown building references in connections 
 
 Description: test whether connections that refer to buildings not in buildings.txt are rejected.
 
@@ -170,7 +170,7 @@ rejected: 2
 
 pass
 
-test 12: misiing connections file 
+test 12: missing connections file 
 
 Description: attempt to run the program when connections.txt does not exist.
 
@@ -185,7 +185,9 @@ Accepted: 0
 rejected: 0
 Option 3 showed all 7 buildings with (no connection). the program did not crash.
 
-pass 
+pass
+
+10.3: 
 
 test 13: BFS from connected building
 
