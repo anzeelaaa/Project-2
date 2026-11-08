@@ -52,4 +52,5 @@ TEAM MEMBERS
 
 1. Nansu Baniya (username = nansubaniya22-sudo) - Member B: campus graph and BFS
 2. Adebukola Adeyemi ( username = buki8222-alt) - Member C: department tree, traversals, department statistics
+3. Anzeela Mahmood (username = anzeelaaa) - Member A: facility records, custom hash table, ID search, name and category search, category report
 
