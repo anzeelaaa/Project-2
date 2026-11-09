@@ -1,5 +1,5 @@
 /*
- * HashTabler.cpp
+ * HashTable.cpp
  * Purpose: Implements a custom hash table for storing, 
   inserting, and searching facilities by ID
  * Author: Anzeela Mahmood (Member A)
