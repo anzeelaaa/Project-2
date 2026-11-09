@@ -1,8 +1,14 @@
+/*
+ * FacilityLoader.cpp
+ * Purpose: Loads facility records from file, validates,inserts valid facilities into
+   the hash table
+ * Author: Anzeela Mahmood (Member A)
+ */
+
 #include "../include/FacilityLoader.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <cctype>
 using namespace std;
 
 // Remove whitespace 

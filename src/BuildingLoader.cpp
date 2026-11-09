@@ -1,3 +1,9 @@
+/*
+ * BuildingLoader.cpp
+ * Purpose: Loads building names from a file and checks for duplicate entries
+ * Author: Anzeela Mahmood (Member A)
+ */
+
 #include "../include/BuildingLoader.h"
 #include <iostream>
 #include <fstream>

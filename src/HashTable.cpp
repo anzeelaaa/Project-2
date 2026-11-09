@@ -1,3 +1,9 @@
+/*
+ * HashTabler.cpp
+ * Purpose: Implements a custom hash table for storing, 
+  inserting, and searching facilities by ID
+ * Author: Anzeela Mahmood (Member A)
+ */
 #include "../include/HashTable.h"
 using namespace std;
 

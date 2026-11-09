@@ -1,5 +1,5 @@
 
-#include "DepartmentTree.h"
+#include "../include/DepartmentTree.h"
 
 #include <fstream>
 #include <algorithm>

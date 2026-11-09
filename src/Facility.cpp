@@ -1,3 +1,9 @@
+/*
+ * Facility.cpp
+ * Purpose: Implements facility class,
+  including facility information, display, and ID/text validation.
+ * Author: Anzeela Mahmood (Member A)
+ */
 #include "../include/Facility.h"
 #include <iostream>
 #include <cctype>
