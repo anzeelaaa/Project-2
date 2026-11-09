@@ -1,4 +1,4 @@
-Anzeela Mahmood: Member A, created GitHub repository, created main.cpp, created custom hash table and handled collisions using separate chianing, created facility class, implemented facility functions, tested file loading, hash collisions, searching, invalid inputs, implemented file loading for building names, including duplicate-entry checking
+Anzeela Mahmood: Member A, created GitHub repository, created main.cpp, created custom hash table and handled collisions using separate chianing, created facility class, implemented facility functions, tested file loading, hash collisions, searching, invalid inputs, implemented file loading for building names, including duplicate-entry checking, cleared compilation errors
 
 Nansu Baniya: Member B, created CampusGraph class (adjacency list), created connection loader with validation and load summary, implemented graph display, degree counts, and BFS reachability, added menu options 3-5, built the campus graph in main.cpp, wrote graph and BFS tests, wrote the graph section of the design document.
 
