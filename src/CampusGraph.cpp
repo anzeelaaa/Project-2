@@ -230,3 +230,74 @@ void CampusGraph::displayShortestPath(const string& startName, const string& des
 	for (int v : path) cout << names_[v] << endl;
 	cout << "Number of connections: " << path.size() - 1 << endl;
 }
+
+int CampusGraph::countComponents() const {
+	vector<bool> visited(names_.size(), false);
+	int components = 0;
+
+	for (int i = 0; i < static_cast<int>(names_.size()); i++) {
+		if (visited[i]) continue;
+
+		components++;
+		queue<int> q;
+		visited[i] = true;
+		q.push(i);
+
+		while (!q.empty()) {
+			int current = q.front();
+			q.pop();
+			for (int next : adjacency_[current]) {
+				if (!visited[next]) {
+					visited[next] = true;
+					q.push(next);
+				}
+			}
+		}
+	}
+	return components;
+}
+
+void CampusGraph::displayConnectivityReport() const {
+	cout << "\nGraph Connectivity Report" << endl;
+
+	if (names_.empty()) {
+		cout << "No buildings are loaded." << endl;
+		cout << "Total buildings: 0" << endl;
+		cout << "Total connections: 0" << endl;
+		cout << "Connected components: 0" << endl;
+		return;
+	}
+	cout << "Total buildings: " << names_.size() << endl;
+	cout << "Total connections: " << connectionCount_ << endl;
+
+	int maxDegree = 0;
+	for (int i = 0; i < static_cast<int>(names_.size()); i++) {
+		if (getDegree(i) > maxDegree) maxDegree = getDegree(i);
+	}
+
+	cout << "Highest degree (" << maxDegree << "): ";
+	bool first = true;
+	for (int i = 0; i < static_cast<int>(names_.size()); i++) {
+		if (getDegree(i) == maxDegree) {
+			if (!first) cout << ", ";
+			cout << names_[i];
+			first = false;
+		}
+	}
+	cout << endl;
+
+	cout << "Isolated buildings: ";
+	first = true;
+	for (int i = 0; i < static_cast<int>(names_.size()); i++) {
+		if (getDegree(i) == 0) {
+			if (!first) cout << ", ";
+			cout << names_[i];
+			first = false;
+		}
+	}
+	if (first) cout << "None";
+	cout << endl;
+
+	cout << "Connected components: " << countComponents() << endl;
+}
+

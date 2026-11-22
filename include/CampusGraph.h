@@ -35,7 +35,8 @@ public:
 
 	vector<int> shortestPath(int start, int dest) const;
 	void displayShortestPath(const string& startName, const string& destName) const;
-
+	int countComponents() const;
+	void displayConnectivityReport() const;
 	ConnectionResult addConnection(const string& nameA, const string& nameB);
 
 private:
