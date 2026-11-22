@@ -7,6 +7,7 @@
 #include <cctype>
 #include <iostream>
 #include <queue>
+#include <algorithm>
 
 static bool isSpaceChar(char c){
 	return c== ' '|| c=='\t' ||c=='\r' || c=='\n';
@@ -165,4 +166,67 @@ void CampusGraph::displayReachable(const string& startName) const {
 	}
 	cout << "Reachable: " << order.size() << " of " << names_.size()
 	     << " buildings" << endl;
+}
+
+vector<int> CampusGraph::shortestPath(int start, int dest) const{
+	vector<int> path;
+	if (start==dest){
+		path.push_back(start);
+		return path;
+	}
+
+
+	vector<bool> visited(names_.size(), false);
+	vector<int> parent(names_.size(), -1);
+	queue<int> q;
+	bool found = false;
+
+	visited[start] = true;
+	q.push(start);
+
+	while (!q.empty() && !found) {
+		int current = q.front();
+		q.pop();
+		for (int next : adjacency_[current]) {
+			if (!visited[next]) {
+				visited[next] = true;
+				parent[next] = current;
+				q.push(next);
+				if (next == dest) { found = true; break; }
+			}
+		}
+	}
+
+	if (!found) return path;
+
+	for (int v = dest; v != -1; v = parent[v]) path.push_back(v);
+	reverse(path.begin(), path.end());
+	return path;
+}
+
+
+void CampusGraph::displayShortestPath(const string& startName, const string& destName) const {
+	string s = trimText(startName);
+	string d = trimText(destName);
+	if (s.empty() || d.empty()) {
+		cout << "Error: building name cannot be blank." << endl;
+		return;
+	}
+
+	int start = findBuilding(s);
+	int dest = findBuilding(d);
+	bool bad = false;
+	if (start == -1) { cout << "Error: start building \"" << s << "\" was not found." << endl; bad = true; }
+	if (dest == -1)  { cout << "Error: destination building \"" << d << "\" was not found." << endl; bad = true; }
+	if (bad) return;
+
+	vector<int> path = shortestPath(start, dest);
+	if (path.empty()) {
+		cout << "No path exists from " << names_[start] << " to " << names_[dest] << "." << endl;
+		return;
+	}
+
+	cout << "\nShortest path:" << endl;
+	for (int v : path) cout << names_[v] << endl;
+	cout << "Number of connections: " << path.size() - 1 << endl;
 }

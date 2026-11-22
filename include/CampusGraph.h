@@ -33,6 +33,9 @@ public:
 	void displayCountsAndDegrees() const;
 	void displayReachable(const string& startName) const;
 
+	vector<int> shortestPath(int start, int dest) const;
+	void displayShortestPath(const string& startName, const string& destName) const;
+
 	ConnectionResult addConnection(const string& nameA, const string& nameB);
 
 private:
