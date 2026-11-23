@@ -253,3 +253,62 @@ From D: D (distance 0), E (distance 1). Reachable: 2 of 6 buildings
 From F: F (distance 0). Reachable: 1 of 6 buildings
 
 pass
+
+Test 17: Search Facility by Name (Case-Insensitive)
+
+Description: Test whether facilities can be found by name regardless of capitalization
+
+Input: Select menu option 3 and enter an existing facility name in lowercase letters
+
+Expected Result: The matching facility should be displayed even when the capitalization differs
+
+Actual Result: The facility was successfully found and displayed using lowercase input
+
+PASS
+
+Test 18: Search Facility by Name (Not Found)
+
+Description: Test searching for a facility name that does not exist.
+
+Input: Select menu option 3 and enter "fake".
+
+Expected Result: A message should indicate that no facilities were found with that name.
+
+Actual Result: Displayed "No facilities found with that name."
+
+PASS
+
+Test 19: Search Facilities by Category (Case-Insensitive)
+
+Description: Test whether facilities can be searched by category regardless of capitalization.
+
+Input: Select menu option 4 and enter category in lowercase
+
+Expected Result: All facilities belonging to the category should be displayed.
+
+Actual Result: Matching facilities were successfully found and displayed using lowercase input.
+
+PASS
+
+Test 20: Search Facilities by Category (Not Found)
+
+Description: Test searching for a category that does not exist.
+
+Input: Select menu option 4 and enter Fakecategory
+
+Expected Result: A message should indicate that no facilities were found in that category.
+Actual Result: Displayed "No facilities found in that category."
+
+PASS
+
+Test 21: Facility Category Report
+
+Description: Test whether the category report correctly groups facilities and counts the facilities in each category.
+
+Input: Select menu option 5
+
+Expected Result: All facilities should be displayed under their respective categories, with the correct count for each category and the total number of facilities.
+
+Actual Result: The category report successfully displayed facilities grouped by category with their counts and the total number of facilities
+
+PASS
