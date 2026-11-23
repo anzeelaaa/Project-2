@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <vector>
 #include <string>
@@ -70,19 +69,22 @@ int main(int argc, char* argv[])
         cout << "FACILITY MANAGEMENT" << endl;
         cout << "1. View all facilities" << endl;
         cout << "2. Search facility by ID" << endl;
+        cout << "3. Search facility by name" << endl;
+        cout << "4. Search facilities by category" << endl;
+        cout << "5. Display category report" << endl;
 
         cout << "\nCAMPUS GRAPH" << endl;
-        cout << "3. View campus graph" << endl;
-        cout << "4. Display graph counts and degrees" << endl;
-        cout << "5. Find reachable buildings (BFS)" << endl;
+        cout << "6. View campus graph" << endl;
+        cout << "7. Display graph counts and degrees" << endl;
+        cout << "8. Find reachable buildings (BFS)" << endl;
 
         cout << "\nDEPARTMENT TREE" << endl;
-        cout << "6. Add department" << endl;
-        cout << "7. Search department" << endl;
-        cout << "8. Display department hierarchy" << endl;
-        cout << "9. Run preorder traversal" << endl;
+        cout << "9. Add department" << endl;
+        cout << "10. Search department" << endl;
+        cout << "11. Display department hierarchy" << endl;
+        cout << "12. Run preorder traversal" << endl;
 
-        cout << "10. Exit" << endl;
+        cout << "13. Exit" << endl;
         cout << "\nEnter your choice: ";
 
         getline(cin, choice);
@@ -132,20 +134,120 @@ int main(int argc, char* argv[])
             }
         }
 
-        // Option 3: View campus graph
+        // Option 3: Search facility by name
         else if (choice == "3")
+        {
+            string searchName;
+            bool found = false;
+
+            cout << "Enter facility name: ";
+            getline(cin, searchName);
+
+            for (const Facility &facility : acceptedFacilities)
+            {
+                if (normalizeText(facility.getName()) ==
+                    normalizeText(searchName))
+                {
+                    facility.display();
+                    found = true;
+                }
+            }
+
+            if (!found)
+            {
+                cout << "No facilities found with that name." << endl;
+            }
+        }
+
+        // Option 4: Search facilities by category
+        else if (choice == "4")
+        {
+            string searchCategory;
+            bool found = false;
+
+            cout << "Enter facility category: ";
+            getline(cin, searchCategory);
+
+            for (const Facility &facility : acceptedFacilities)
+            {
+                if (normalizeText(facility.getCategory()) ==
+                    normalizeText(searchCategory))
+                {
+                    facility.display();
+                    found = true;
+                }
+            }
+
+            if (!found)
+            {
+                cout << "No facilities found in that category." << endl;
+            }
+        }
+
+        // Option 5: Display category report
+        else if (choice == "5")
+        {
+            vector<string> categories;
+
+            for (const Facility &facility : acceptedFacilities)
+            {
+                string category = normalizeText(facility.getCategory());
+
+                bool alreadyExists = false;
+
+                for (const string &existing : categories)
+                {
+                    if (existing == category)
+                    {
+                        alreadyExists = true;
+                        break;
+                    }
+                }
+
+                if (!alreadyExists)
+                {
+                    categories.push_back(category);
+                }
+            }
+
+            cout << "\nFACILITY CATEGORY REPORT" << endl;
+
+            for (const string &category : categories)
+            {
+                int count = 0;
+
+                cout << "\nCategory: " << category << endl;
+
+                for (const Facility &facility : acceptedFacilities)
+                {
+                    if (normalizeText(facility.getCategory()) == category)
+                    {
+                        facility.display();
+                        count++;
+                    }
+                }
+
+                cout << "Total in category: " << count << endl;
+            }
+
+            cout << "\nTotal Facilities: "
+                 << acceptedFacilities.size() << endl;
+        }
+
+        // Option 6: View campus graph
+        else if (choice == "6")
         {
             graph.displayGraph();
         }
 
-        // Option 4: Display graph counts and degrees
-        else if (choice == "4")
+        // Option 7: Display graph counts and degrees
+        else if (choice == "7")
         {
             graph.displayCountsAndDegrees();
         }
 
-        // Option 5: Find reachable buildings using BFS
-        else if (choice == "5")
+        // Option 8: Find reachable buildings using BFS
+        else if (choice == "8")
         {
             string startName;
 
@@ -155,8 +257,8 @@ int main(int argc, char* argv[])
             graph.displayReachable(startName);
         }
 
-        // Option 6: Add department
-        else if (choice == "6")
+        // Option 9: Add department
+        else if (choice == "9")
         {
             string departmentName;
             string parentName;
@@ -181,8 +283,8 @@ int main(int argc, char* argv[])
             }
         }
 
-        // Option 7: Search department
-        else if (choice == "7")
+        // Option 10: Search department
+        else if (choice == "10")
         {
             string departmentName;
 
@@ -192,20 +294,20 @@ int main(int argc, char* argv[])
             departmentTree.searchDepartment(departmentName);
         }
 
-        // Option 8: Display department hierarchy
-        else if (choice == "8")
+        // Option 11: Display department hierarchy
+        else if (choice == "11")
         {
             departmentTree.displayHierarchy();
         }
 
-        // Option 9: Run preorder traversal
-        else if (choice == "9")
+        // Option 12: Run preorder traversal
+        else if (choice == "12")
         {
             departmentTree.displayPreorder();
         }
 
-        // Option 10: Exit
-        else if (choice == "10")
+        // Option 13: Exit
+        else if (choice == "12")
         {
             cout << "Exiting Campus Management System." << endl;
         }
@@ -213,11 +315,11 @@ int main(int argc, char* argv[])
         // Invalid menu choice
         else
         {
-            cout << "Invalid choice. Please enter a number from 1 to 10."
+            cout << "Invalid choice. Please enter a number from 1 to 13."
                  << endl;
         }
 
-    } while (choice != "10");
+    } while (choice != "13");
 
     return 0;
 }
