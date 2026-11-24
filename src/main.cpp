@@ -84,6 +84,9 @@ int main(int argc, char* argv[])
         cout << "11. Display department hierarchy" << endl;
         cout << "12. Run preorder traversal" << endl;
 
+	cout << "17. Graph connectivity report" <<endl;
+	cout << "18. Find shortest path (BFS)" <<endl;
+
         cout << "13. Exit" << endl;
         cout << "\nEnter your choice: ";
 
@@ -257,6 +260,26 @@ int main(int argc, char* argv[])
             graph.displayReachable(startName);
         }
 
+	//option 17: Graph connectivity report
+	else if (choice == "17")
+        {
+            graph.displayConnectivityReport();
+        }
+
+	//option 18: finding shortest path using BFS
+	else if (choice == "18")
+        {
+            string startName;
+            string destName;
+
+            cout << "Enter starting building: ";
+            getline(cin, startName);
+            cout << "Enter destination building: ";
+            getline(cin, destName);
+
+            graph.displayShortestPath(startName, destName);
+        }
+
         // Option 9: Add department
         else if (choice == "9")
         {
@@ -307,7 +330,7 @@ int main(int argc, char* argv[])
         }
 
         // Option 13: Exit
-        else if (choice == "12")
+        else if (choice == "13")
         {
             cout << "Exiting Campus Management System." << endl;
         }
