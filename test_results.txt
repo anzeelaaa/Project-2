@@ -312,3 +312,146 @@ Expected Result: All facilities should be displayed under their respective categ
 Actual Result: The category report successfully displayed facilities grouped by category with their counts and the total number of facilities
 
 PASS
+
+Test 22: Shortest path, equal routes
+
+Description: Two routes have the same length; neighbor insertion order picks the route.
+
+Input: Original data files, option 18, start: library, destination: gym
+
+Expected Result: Library, Student Union, Gym. Number of connections: 2
+
+Actual Result:
+Library
+Student Union
+Gym
+
+Number of connections: 2
+
+PASS
+
+Test 23: Shortest path, equal routes
+
+Description: Shortest path across several buildings.
+
+Input: Original data files, option 18, start: Library, destination: Engineering Building
+
+Expected Result: Library, Student Union, Science Building, Engineering Building. Number of connections: 3
+
+Actual Result:
+Library
+Student Union
+Science Building
+Engineering Building
+
+Number of connections: 3
+
+PASS
+
+Test 25: Shortest path, start equals destination
+
+Description: Start and destination are the same building.
+
+Input: Original data files, option 18, start: Library, destination: Library
+
+Expected Result: Library. Number of connections: 0
+Actual Result:
+Library
+
+Number of connections: 0
+
+PASS
+
+Test 26: Shortest path, no path
+
+Description: Two known buildings that are not connected.
+
+Input: Original data files, option 18, start: Library, destination: Observatory
+
+Expected Result: Message that no path exists.
+
+Actual Result:
+No path exists from Library to Observatory.
+
+PASS
+
+Test 27: Shortest path, unknown start
+
+Description: Start building does not exist.
+
+Input: Original data files, option 18, start: Moon, destination: Gym
+
+Expected Result: Error naming "Moon" as not found; return to menu.
+
+Actual Result:
+Error: start building "Moon" was not found.
+Returned to the menu.
+
+PASS
+
+Test 28: Shortest path, unknown destination
+
+Description: Destination building does not exist.
+
+Input: Original data files, option 18, start: Library, destination: Pluto
+
+Expected Result: Error naming "Pluto" as not found; return to menu.
+
+Actual Result:
+Error: destination building "Pluto" was not found.
+Returned to the menu.
+
+PASS
+
+Test 29: Connectivity report with an isolated building
+
+Description: Connectivity report on the sample data.
+
+Input: Original data files, option 17
+
+Expected Result: 7 buildings, 6 connections, Highest degree (3): Student Union, Isolated: Observatory, Components: 2
+
+Actual Result:
+Total buildings: 7
+Total connections: 6
+Highest degree (3): Student Union
+Isolated buildings: Observatory
+
+Connected components: 2
+
+PASS
+
+Test 30: Connectivity report with a tie for highest degree
+
+Description: Two buildings tie for highest degree; both must be listed.
+
+Input: testdata/degree_tie, option 17
+
+Expected Result: 6 buildings, 6 connections, Highest degree (3): Hub One, Hub Two, Isolated: Lonely, Components: 2
+
+Actual Result:
+Total buildings: 6
+Total connections: 6
+Highest degree (3): Hub One, Hub Two
+Isolated buildings: Lonely
+Connected components: 2
+
+PASS
+
+Test 31: Graph with no buildings
+
+Description: Report and shortest path with an empty buildings file.
+
+Input: testdata/empty_graph, option 17, then option 18 with A and B
+
+Expected Result: "No buildings are loaded." with 0 totals and 0 components; A and B not found; no crash.
+
+Actual Result:
+No buildings are loaded.
+Total buildings: 0
+Total connections: 0
+Connected components: 0
+Error: start building "A" was not found.
+Error: destination building "B" was not found.
+
+PASS
