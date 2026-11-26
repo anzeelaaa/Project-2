@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <string>
 
@@ -142,6 +143,7 @@ int main(int argc, char* argv[])
         {
             string searchName;
             bool found = false;
+            int count = 0;
 
             cout << "Enter facility name: ";
             getline(cin, searchName);
@@ -153,8 +155,11 @@ int main(int argc, char* argv[])
                 {
                     facility.display();
                     found = true;
+                    count ++;
                 }
             }
+
+            cout << "Total matches: " << count << endl;
 
             if (!found)
             {
@@ -167,6 +172,7 @@ int main(int argc, char* argv[])
         {
             string searchCategory;
             bool found = false;
+            int count = 0;
 
             cout << "Enter facility category: ";
             getline(cin, searchCategory);
@@ -178,9 +184,12 @@ int main(int argc, char* argv[])
                 {
                     facility.display();
                     found = true;
+                    count ++;
                 }
             }
 
+            cout << "Total matches: " << count << endl;
+            
             if (!found)
             {
                 cout << "No facilities found in that category." << endl;
@@ -194,13 +203,12 @@ int main(int argc, char* argv[])
 
             for (const Facility &facility : acceptedFacilities)
             {
-                string category = normalizeText(facility.getCategory());
-
+                string category = facility.getCategory();
                 bool alreadyExists = false;
 
                 for (const string &existing : categories)
                 {
-                    if (existing == category)
+                    if (normalizeText(existing) == normalizeText(category))
                     {
                         alreadyExists = true;
                         break;
@@ -214,27 +222,39 @@ int main(int argc, char* argv[])
             }
 
             cout << "\nFACILITY CATEGORY REPORT" << endl;
-
-            for (const string &category : categories)
+            if (acceptedFacilities.empty())
             {
-                int count = 0;
-
-                cout << "\nCategory: " << category << endl;
-
-                for (const Facility &facility : acceptedFacilities)
+                cout << "No facilities are available." << endl;
+                cout << "Total Facilities: 0" << endl;
+            }
+            else
+            {
+                for (const string &category : categories)
                 {
-                    if (normalizeText(facility.getCategory()) == category)
+                    int count = 0;
+
+                    cout << "\nCategory: " << category << endl;
+
+                    for (const Facility &facility : acceptedFacilities)
                     {
-                        facility.display();
-                        count++;
+                        if (normalizeText(facility.getCategory()) == normalizeText(category))
+                        {
+                            facility.display();
+                            count++;
+                        }
                     }
+
+                    double percentage =
+                        (static_cast<double>(count) / acceptedFacilities.size()) * 100;
+
+
+                    cout << "Total in category: " << count << endl;
+                    cout << "Percentage: " << fixed << setprecision(1) << percentage << "%" << defaultfloat << endl;
                 }
 
-                cout << "Total in category: " << count << endl;
+                cout << "\nTotal Facilities: "
+                     << acceptedFacilities.size() << endl;
             }
-
-            cout << "\nTotal Facilities: "
-                 << acceptedFacilities.size() << endl;
         }
 
         // Option 6: View campus graph

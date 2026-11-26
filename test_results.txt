@@ -1,5 +1,3 @@
-10.1:
-
 Test 1: Valid Facility Records
 
 Description: Test loading valid facility records.
@@ -39,7 +37,7 @@ Input: data/fake_facilities.txt
 
 Expected Result: An error should be displayed but the program should not crash.
 
-Actual Result: Displayed Error: Could not open data/missing_facilities.txt, program didn't crash
+Actual Result: Displayed Error: Could not open data/fake_facilities.txt, program didn't crash
 
 PASS
 
@@ -258,12 +256,12 @@ Test 17: Search Facility by Name (Case-Insensitive)
 
 Description: Test whether facilities can be found by name regardless of capitalization
 
-Input: Select menu option 3 and enter an existing facility name in lowercase letters
+Input: Select menu option 3 and enter an existing facility name in lowercase letters (Room 101 for test)
 
 Expected Result: The matching facility should be displayed even when the capitalization differs
 
 Actual Result: The facility was successfully found and displayed using lowercase input
-
+Total matches: 2
 PASS
 
 Test 18: Search Facility by Name (Not Found)
@@ -287,6 +285,7 @@ Input: Select menu option 4 and enter category in lowercase
 Expected Result: All facilities belonging to the category should be displayed.
 
 Actual Result: Matching facilities were successfully found and displayed using lowercase input.
+Total matches: 3
 
 PASS
 
@@ -307,7 +306,7 @@ Description: Test whether the category report correctly groups facilities and co
 
 Input: Select menu option 5
 
-Expected Result: All facilities should be displayed under their respective categories, with the correct count for each category and the total number of facilities.
+Expected Result: All facilities should be displayed under their respective categories, with the correct count for each category and percentage and the total number of facilities.
 
 Actual Result: The category report successfully displayed facilities grouped by category with their counts and the total number of facilities
 
@@ -453,5 +452,33 @@ Total connections: 0
 Connected components: 0
 Error: start building "A" was not found.
 Error: destination building "B" was not found.
+
+PASS
+
+Test 22: Multiple Facilities with the Same Name
+
+Description: Test searching for multiple facilities that share the same name but have different IDs.
+
+Input: 
+
+F020|Test Study Room|Library|Study
+F021|Test Study Room|Science Building|Study
+
+Expected Result: Both facilities with the matching name should be displayed.
+
+Actual Result: Both facilities (F020 and F021) were displayed
+
+PASS
+
+Test 32: Category Report with Different Capitalization
+
+Description: Test whether categories with different capitalization are grouped together.
+
+Input: 
+F020|Test Library Room|Library|library
+
+Expected Result: The facility should be grouped under the existing Library category. Categories should not appear separately because of capitalization differences. The category count should be 3.
+
+Actual Result: All three Library facilities were grouped under one Library heading. Total in category: 3. Percentage: 27.3%.
 
 PASS
