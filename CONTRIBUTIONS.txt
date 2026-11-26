@@ -4,4 +4,8 @@ Nansu Baniya: Member B, created CampusGraph class (adjacency list), created conn
 
 Adebukola Adeyemi: Member C, created DepartmentTree class, implemented department loading, adding, and searching, developed hierarchy display and preorder, postorder, and level-order traversals, implemented department statistics, integrated menu options 9–15 into main.cpp, and tested department tree features.
 
+
+Reflections:
+Anzeela Mahmood: In this project I gained experience implementing and managing  records in C++. I practiced how to create a custom hash table using separate chaining, validating input data, and search functions. I handled errors and had to think about solving issues making sure facility IDs and text searches worked correctly regardless of capitalization, while also handling duplicate records and invalid inputs. I addressed these issues by using normalization functions and testing different input cases. This project helped me improve my understanding of data structures, file handling, and debugging.
+
 https://github.com/anzeelaaa/Project-2.git
