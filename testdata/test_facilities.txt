@@ -1,5 +1,20 @@
+Facility:
 F009|Gym Locker|Gym|Recreation
 F010|Science Desk|Science Building|Study
+F201|Capitalization Test|Gym|Recreation
+f201|Duplicate Capitalization Test|Gym|Recreation
+ABC01|Invalid ID Test|Gym|Recreation
+
+Building:
+F202|Unknown Building Test|Fake Building|Study
+
+Facility name:
+fake
+
+Category:
+Fakecategory
+study
+F012|Empty Category Test|Gym|
 
 Duplicate:
 F020|Test Study Room|Library|Study
